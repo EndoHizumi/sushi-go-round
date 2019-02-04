@@ -1,0 +1,10 @@
+version: '3'
+services:
+  vue_app:
+    build: .
+    tty: on
+    user: "1000:1000"
+    ports: 
+      - "8080:8080"
+    volumes:
+      - .:/home/node/vuesample

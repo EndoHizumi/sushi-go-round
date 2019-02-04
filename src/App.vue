@@ -1,18 +1,18 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div id="sushi">🍣</div>
+    <HelloWorld msg="Welcome to Your Sushi App"/>
+    <button id="rotate controll">Pause</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  }
+  // components: {
+  //   HelloWorld
+  // }
 }
 </script>
 
@@ -24,5 +24,20 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+#sushi {
+    font-family: "Segoe UI Emoji",
+                 "Segoe UI Symbol",
+                 "Apple Color Emoji",
+                 "Noto Color Emoji",
+                 "Noto Emoji",
+                 sans-serif;
+    font-size: 1500%;
+    animation: spin 1.5s linear infinite;
+ }
+
+ @keyframes spin {
+	0% {transform: rotate(0deg);}
+	100% {transform: rotate(360deg);}
 }
 </style>

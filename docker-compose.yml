@@ -8,3 +8,6 @@ services:
       - "8080:8080"
     volumes:
       - .:/home/node/vuesample
+    working_dir: "/home/node/vuesample"
+
+    command: npm run serve

@@ -1,18 +1,32 @@
 <template>
   <div id="app">
-    <div id="sushi">🍣</div>
-    <HelloWorld msg="Welcome to Your Sushi App"/>
-    <button id="rotate controll">Pause</button>
+    <div v-bind:class="state" id="sushi">🍣</div>
+    <HelloWorld msg="Welcome to Your sushi-go-round App"/>
+    <button id="rotateControll" v-on:click="toggle">Pause</button>
   </div>
 </template>
 
 <script>
-
+import HelloWorld from "./components/HelloWorld"
 export default {
   name: 'app',
-  // components: {
-  //   HelloWorld
-  // }
+  data(){
+    return{
+      state:"spin"
+    }
+  },
+  components: {
+    HelloWorld
+  },
+  methods:{
+    toggle(){
+      if (this.state=="spin") {
+        this.state="stop"       
+      } else {
+        this.state="spin"
+      }
+    }
+  }
 }
 </script>
 
@@ -32,9 +46,12 @@ export default {
                  "Noto Color Emoji",
                  "Noto Emoji",
                  sans-serif;
-    font-size: 1500%;
-    animation: spin 1.5s linear infinite;
+    font-size: 1000%;
  }
+
+.spin{
+    animation: spin 1.5s linear infinite;
+}
 
  @keyframes spin {
 	0% {transform: rotate(0deg);}

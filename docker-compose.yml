@@ -11,4 +11,4 @@ services:
       - .:/home/node/vuesample
     working_dir: "/home/node/vuesample"
 
-    command: npm run serve
+#    command: npm run serve

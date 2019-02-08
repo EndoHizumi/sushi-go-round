@@ -1,4 +1,4 @@
 FROM node
 
-RUN npm install -g npm
-RUN npm install -g @vue/cli
+RUN npm install @vue/cli
+RUN npm install

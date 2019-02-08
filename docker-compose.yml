@@ -4,11 +4,9 @@ services:
     build: .
     tty: true
     stdin_open: true
-    user: "1000:1000"
+    # user: "1000:1000"
     ports: 
       - "8080:8080"
     volumes:
       - .:/home/node/vuesample
     working_dir: "/home/node/vuesample"
-
-#    command: npm run serve

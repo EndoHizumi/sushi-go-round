@@ -1,7 +1,7 @@
 <template>
   <div class="sushi">
     <div id="sushiArea">
-      <div v-for="(index,sushi) in sushis" v-bind:key="sushi.key" v-bind:class="state" id="sushi1">🍣</div>
+      <div v-bind:class="state" id="sushi">🍣</div>
     </div>
     <h1>Welcome to sushi-go-round App</h1>
     <p>{{message}}</p>
@@ -14,9 +14,6 @@
 export default {
   name: "Sushi",
   data() {
-    props: {
-      msg: String;
-    }
     return {
       state: "spin",
       message:
@@ -42,8 +39,8 @@ export default {
 [id*="sushi"] {
   font-family: "Segoe UI Emoji", "Segoe UI Symbol", "Apple Color Emoji",
     "Noto Color Emoji", "Noto Emoji", sans-serif;
-  font-size: 1000%;
-  width: 20%;
+  font-size: 500%;
+  width: 60%;
   margin-left: auto;
   margin-right: auto;
   display: inline-block;

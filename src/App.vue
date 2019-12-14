@@ -66,4 +66,8 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+ul li {
+  display: inline;
+}
 </style>

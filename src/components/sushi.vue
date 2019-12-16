@@ -1,12 +1,13 @@
 <template>
-  <div v-bind:class="state" id="sushi">🍣</div>
+  <div v-bind:class="state" id="sushi">{{food}}</div>
 </template>
 
 <script>
 export default {
   name: "Sushi",
   props: {
-    state: String
+    state: String,
+    food: String
   }
 };
 </script>

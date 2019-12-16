@@ -13,7 +13,7 @@
     </div>
     <ul>
       <li v-for="number in numbers" v-bind:key="number">
-        <Sushi v-bind:state="state" />
+        <Sushi v-bind:state="state" v-bind:food="food"/>
       </li>
     </ul>
   </div>
@@ -26,6 +26,7 @@ export default {
   data() {
     return {
       state: "spin",
+      food: "🍣",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
       numbers: [0]

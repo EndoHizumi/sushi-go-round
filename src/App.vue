@@ -12,8 +12,8 @@
       </p>
     </div>
     <ul>
-      <li v-for="number in numbers" v-bind:key="number">
-        <Sushi v-bind:state="state" v-bind:food="food"/>
+      <li v-for="foodItem in foods" v-bind:key="foodItem">
+        <Sushi v-bind:state="state" v-bind:food="foodItem.food"/>
       </li>
     </ul>
   </div>
@@ -29,7 +29,7 @@ export default {
       food: "🍣",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
-      numbers: [0]
+      foods: [{ state: "spin", food: "🍣" }],
     };
   },
   components: {
@@ -47,11 +47,11 @@ export default {
       }
     },
     addSushi() {
-      this.numbers.push(0);
+      this.foods.push({ state: this.state, food: "🍣" });
     },
     reduceSushi() {
-      if (this.numbers.length > 1) {
-        this.numbers.pop();
+      if (this.foods.length > 1) {
+        this.foods.pop();
       }
     }
   }

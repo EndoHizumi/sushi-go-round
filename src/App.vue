@@ -26,7 +26,6 @@ export default {
   data() {
     return {
       state: "spin",
-      food: "🍣",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
       foods: [{ state: "spin", food: "🍣" }],
@@ -46,6 +45,11 @@ export default {
         this.message =
           "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.";
       }
+    },
+    onchange(event) {
+      /* eslint-disable no-console */
+      console.log(event)
+      this.$set(this.foods, 1, { state: "stop", food: "🍵" });
     },
     addSushi() {
       this.foods.push({ state: this.state, food: "🍣" });

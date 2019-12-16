@@ -6,9 +6,9 @@
       <span id="nowState">state:</span>
       <button id="rotateControll" v-on:click="toggle">{{state}}</button>
       <p>
-        <span>controller:</span>
-        <button id="add" v-on:click="addSushi">Add</button>
-        <button id="reduce" v-on:click="reduceSushi">Reduce</button>
+        <span>Sushi:{{index}} yen</span><br>
+        <button id="add" v-on:click="addSushi">+</button>
+        <button id="reduce" v-on:click="reduceSushi">-</button>
       </p>
     </div>
     <ul>
@@ -30,6 +30,7 @@ export default {
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
       foods: [{ state: "spin", food: "🍣" }],
+      index: 100
     };
   },
   components: {
@@ -43,15 +44,17 @@ export default {
       } else {
         this.state = "spin";
         this.message =
-          "Japanese Common People Supporter is kaiten-zushi. <br> I expressed gratitude for that kaiten-zushi.";
+          "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.";
       }
     },
     addSushi() {
       this.foods.push({ state: this.state, food: "🍣" });
+      this.index = this.foods.length * 100
     },
     reduceSushi() {
       if (this.foods.length > 1) {
         this.foods.pop();
+        this.index = this.foods.length * 100
       }
     }
   }

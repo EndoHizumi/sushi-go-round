@@ -1,4 +1,4 @@
-# vuesample
+# Sushi-go-round
 
 ## Project setup
 ```
@@ -15,14 +15,15 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
-
 ### Lints and fixes files
 ```
 npm run lint
+```
+
+### Containar build
+
+```
+docker build . -t sushi-go-round
 ```
 
 ### Customize configuration

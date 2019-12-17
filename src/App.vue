@@ -15,7 +15,7 @@
     </div>
     <ul>
       <li v-for="foodItem in foods" v-bind:key="foodItem.id" v-on:click="onchange(foodItem.id)">
-        <Sushi v-bind:state="state" v-bind:food="foodItem.food"/>
+        <Sushi v-bind:state="['foodItem.state','foodItem.name']" v-bind:food="foodItem.food"/>
       </li>
     </ul>
   </div>
@@ -30,7 +30,7 @@ export default {
       state: "spin",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
-      foods: [{id:0, state: "spin", food: "🍣" }],
+      foods: [{id:0, state: "spin", name:"sushi", food: "🍣" }],
       index: 100
     };
   },
@@ -49,11 +49,11 @@ export default {
       }
     },
     onchange(id) {
-      this.$set(this.foods, id, {id:id, state: "stop", food: "🍵" });
+      this.$set(this.foods, id, {id:id, state: "stop", name:"tea", food: "🍵" });
     },
     addSushi() {
       var foodNum = this.foods.length
-      this.foods.push({id: foodNum, state: this.state, food: "🍣" });
+      this.foods.push({id: foodNum, state: this.state, name:"sushi", food: "🍣" });
       this.index = foodNum * 100
     },
     reduceSushi() {

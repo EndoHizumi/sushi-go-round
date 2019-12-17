@@ -53,7 +53,7 @@ export default {
     },
     addSushi() {
       var foodNum = this.foods.length
-      this.foods.push({id: foodNum, state: this.state, name:"sushi", food: "🍣" });
+      this.foods.push({id: foodNum, state: this.state, food: "🍣" });
       this.index = foodNum * 100
     },
     reduceSushi() {

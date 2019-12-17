@@ -3,6 +3,8 @@
     <div id="header">
       <h1>Welcome to sushi-go-round App</h1>
       <p>{{message}}</p>
+    </div>
+    <div id="controller">
       <span id="nowState">state:</span>
       <button id="rotateControll" v-on:click="toggle">{{state}}</button>
       <p>
@@ -12,7 +14,7 @@
       </p>
     </div>
     <ul>
-      <li v-for="foodItem in foods" v-bind:key="foodItem">
+      <li v-for="foodItem in foods" v-bind:key="foodItem.id" v-on:click="onchange(foodItem.id)">
         <Sushi v-bind:state="state" v-bind:food="foodItem.food"/>
       </li>
     </ul>
@@ -28,7 +30,7 @@ export default {
       state: "spin",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
-      foods: [{ state: "spin", food: "🍣" }],
+      foods: [{id:0, state: "spin", food: "🍣" }],
       index: 100
     };
   },
@@ -46,14 +48,13 @@ export default {
           "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.";
       }
     },
-    onchange(event) {
-      /* eslint-disable no-console */
-      console.log(event)
-      this.$set(this.foods, 1, { state: "stop", food: "🍵" });
+    onchange(id) {
+      this.$set(this.foods, id, {id:id, state: "stop", food: "🍵" });
     },
     addSushi() {
-      this.foods.push({ state: this.state, food: "🍣" });
-      this.index = this.foods.length * 100
+      var foodNum = this.foods.length
+      this.foods.push({id: foodNum, state: this.state, food: "🍣" });
+      this.index = foodNum * 100
     },
     reduceSushi() {
       if (this.foods.length > 1) {

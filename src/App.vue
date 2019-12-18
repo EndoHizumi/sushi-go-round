@@ -15,7 +15,7 @@
     </div>
     <ul>
       <li v-for="foodItem in foods" v-bind:key="foodItem.id" v-on:click="onchange(foodItem.id)">
-        <Sushi v-bind:state="['foodItem.state','foodItem.name']" v-bind:food="foodItem.food"/>
+        <Sushi v-bind:state="foodItem.state" v-bind:name="foodItem.name" v-bind:food="foodItem.food"/>
       </li>
     </ul>
   </div>
@@ -52,8 +52,8 @@ export default {
       this.$set(this.foods, id, {id:id, state: "stop", name:"tea", food: "🍵" });
     },
     addSushi() {
-      var foodNum = this.foods.length
-      this.foods.push({id: foodNum, state: this.state, food: "🍣" });
+      var foodNum = this.foods.length+1
+      this.foods.push({id: foodNum, state: this.state, name:"sushi", food: "🍣" });
       this.index = foodNum * 100
     },
     reduceSushi() {

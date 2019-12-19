@@ -8,14 +8,15 @@
       <span id="nowState">state:</span>
       <button id="rotateControll" v-on:click="toggle">{{state}}</button>
       <p>
-        <span>Sushi:{{index}} yen</span><br>
+        <span>Sushi:{{index}} yen</span>
+        <br />
         <button id="add" v-on:click="addSushi">+</button>
         <button id="reduce" v-on:click="reduceSushi">-</button>
       </p>
     </div>
     <ul>
-      <li v-for="foodItem in foods" v-bind:key="foodItem.id" v-on:click="onchange(foodItem.id)">
-        <Sushi v-bind:state="foodItem.state" v-bind:name="foodItem.name" v-bind:food="foodItem.food"/>
+      <li v-for="food in foods" v-bind:key="food.id" v-on:click="onchange(food.id)">
+        <Sushi v-bind:state="food.state" v-bind:name="food.name" v-bind:food="food.icon" />
       </li>
     </ul>
   </div>
@@ -66,7 +67,7 @@ export default {
     reduceSushi() {
       if (this.foods.length > 1) {
         this.foods.pop();
-        this.index = this.foods.length * 100
+        this.index = this.foods.length * 100;
       }
     }
   }

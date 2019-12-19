@@ -31,12 +31,15 @@ export default {
       state: "spin",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
-      foods: [{id:0, state: "spin", name:"sushi", food: "🍣" }],
-      index: 100
+      foods: [],
+      index: 0
     };
   },
   components: {
     Sushi
+  },
+  mounted: function() {
+    this.addSushi();
   },
   methods: {
     toggle() {
@@ -60,9 +63,14 @@ export default {
       this.$set(this.foods, id, {id:id, state: "stop", name:"tea", food: "🍵" });
     },
     addSushi() {
-      var foodNum = this.foods.length+1
-      this.foods.push({id: foodNum, state: this.state, name:"sushi", food: "🍣" });
-      this.index = foodNum * 100
+      var foodNum = (this.foods.length == 0 ? 1 : this.foods.length);
+      this.foods.push({
+        id: foodNum,
+        state: this.state,
+        name: "sushi",
+        icon: "🍣"
+      });
+      this.index = foodNum * 100;
     },
     reduceSushi() {
       if (this.foods.length > 1) {

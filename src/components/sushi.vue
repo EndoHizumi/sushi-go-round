@@ -26,7 +26,7 @@ export default {
   animation: spin 1.5s linear infinite;
 }
 
-.sushi .stop {
+.sushi.stop {
   filter: grayscale(100%);
 }
 

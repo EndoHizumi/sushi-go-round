@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     toggle() {
+      // 切り替え
       if (this.state == "spin") {
         this.state = "stop";
         this.message = "oh? were you full of stomach?";
@@ -47,6 +48,12 @@ export default {
         this.message =
           "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.";
       }
+      // 寿司だけに切り替え結果を適用する
+      this.foods
+        .filter(food => food.name == "sushi")
+        .forEach(sushi => {
+          sushi.state = this.state;
+        });
     },
     onchange(id) {
       this.$set(this.foods, id, {id:id, state: "stop", name:"tea", food: "🍵" });

@@ -3,17 +3,20 @@
     <div id="header">
       <h1>Welcome to sushi-go-round App</h1>
       <p>{{message}}</p>
+    </div>
+    <div id="controller">
       <span id="nowState">state:</span>
       <button id="rotateControll" v-on:click="toggle">{{state}}</button>
       <p>
-        <span>Sushi:{{index}} yen</span><br>
+        <span>Sushi:{{index}} yen</span>
+        <br />
         <button id="add" v-on:click="addSushi">+</button>
         <button id="reduce" v-on:click="reduceSushi">-</button>
       </p>
     </div>
     <ul>
-      <li v-for="foodItem in foods" v-bind:key="foodItem">
-        <Sushi v-bind:state="state" v-bind:food="foodItem.food"/>
+      <li v-for="food in foods" v-bind:key="food.id" v-on:click="onchange(food.id)">
+        <Sushi v-bind:state="food.state" v-bind:name="food.name" v-bind:food="food.icon" />
       </li>
     </ul>
   </div>
@@ -28,15 +31,23 @@ export default {
       state: "spin",
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
-      foods: [{ state: "spin", food: "🍣" }],
-      index: 100
+      foods: [],
     };
   },
   components: {
     Sushi
   },
+  mounted: function() {
+    this.addSushi();
+  },
+  computed: {
+    index: function() {
+      return this.foods.length * 100;
+    }
+  },
   methods: {
     toggle() {
+      // 切り替え
       if (this.state == "spin") {
         this.state = "stop";
         this.message = "oh? were you full of stomach?";
@@ -45,6 +56,20 @@ export default {
         this.message =
           "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.";
       }
+      // 寿司だけに切り替え結果を適用する
+      this.foods
+        .filter(food => food.name == "sushi")
+        .forEach(sushi => {
+          sushi.state = this.state;
+        });
+    },
+    onchange(id) {
+      this.$set(this.foods, id, {
+        id: id,
+        state: "stop",
+        name: "tea",
+        icon: "🍵"
+      });
     },
     onchange(event) {
       /* eslint-disable no-console */
@@ -52,13 +77,18 @@ export default {
       this.$set(this.foods, 1, { state: "stop", food: "🍵" });
     },
     addSushi() {
-      this.foods.push({ state: this.state, food: "🍣" });
-      this.index = this.foods.length * 100
+      var foodNum = this.foods.length;
+      this.foods.push({
+        id: foodNum,
+        state: this.state,
+        name: "sushi",
+        icon: "🍣"
+      });
+
     },
     reduceSushi() {
       if (this.foods.length > 1) {
         this.foods.pop();
-        this.index = this.foods.length * 100
       }
     }
   }

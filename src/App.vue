@@ -71,11 +71,6 @@ export default {
         icon: "🍵"
       });
     },
-    onchange(event) {
-      /* eslint-disable no-console */
-      console.log(event)
-      this.$set(this.foods, 1, { state: "stop", food: "🍵" });
-    },
     addSushi() {
       var foodNum = this.foods.length;
       this.foods.push({

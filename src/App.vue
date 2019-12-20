@@ -32,7 +32,6 @@ export default {
       message:
         "Japanese Common People Supporter is kaiten-zushi. I expressed gratitude for that kaiten-zushi.",
       foods: [],
-      index: 0
     };
   },
   components: {
@@ -40,6 +39,11 @@ export default {
   },
   mounted: function() {
     this.addSushi();
+  },
+  computed: {
+    index: function() {
+      return this.foods.length * 100;
+    }
   },
   methods: {
     toggle() {
@@ -60,22 +64,25 @@ export default {
         });
     },
     onchange(id) {
-      this.$set(this.foods, id, {id:id, state: "stop", name:"tea", food: "🍵" });
+      this.$set(this.foods, id, {
+        id: id,
+        state: "stop",
+        name: "tea",
+        icon: "🍵"
+      });
     },
     addSushi() {
-      var foodNum = (this.foods.length == 0 ? 1 : this.foods.length);
+      var foodNum = this.foods.length;
       this.foods.push({
         id: foodNum,
         state: this.state,
         name: "sushi",
         icon: "🍣"
       });
-      this.index = foodNum * 100;
     },
     reduceSushi() {
       if (this.foods.length > 1) {
         this.foods.pop();
-        this.index = this.foods.length * 100;
       }
     }
   }
